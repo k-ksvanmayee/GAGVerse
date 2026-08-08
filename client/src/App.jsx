@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
@@ -7,7 +7,7 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import Posts from './pages/Posts.jsx';
 import PostDetail from './pages/PostDetail.jsx';
-import Upload from './pages/Upload.jsx';
+import AdminPortal from './pages/AdminPortal.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,7 +29,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/posts" element={<Posts />} />
               <Route path="/posts/:id" element={<PostDetail />} />
-              <Route path="/upload" element={<Upload />} />
+              <Route path="/upload" element={<Navigate to="/admin" replace />} />
+              <Route path="/admin" element={<AdminPortal />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </main>

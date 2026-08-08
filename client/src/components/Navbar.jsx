@@ -17,7 +17,7 @@ export default function Navbar() {
   const links = [
     { to: '/', label: 'Home' },
     { to: '/posts', label: 'Posts' },
-    { to: '/upload', label: isAdmin ? 'Upload' : 'Admin' },
+    { to: '/admin', label: 'Admin' },
   ];
 
   return (
@@ -26,11 +26,11 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight">
           <img
             src="/images/logo.png"
-            alt="AniVerse logo"
+            alt="GAGVerse logo"
             className="h-10 w-auto rounded-xl object-contain"
           />
           <span className="font-display bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-400 bg-clip-text text-transparent">
-            AniVerse
+            GAGVerse
           </span>
         </Link>
 

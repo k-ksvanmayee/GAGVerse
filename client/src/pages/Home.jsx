@@ -5,6 +5,55 @@ import PostCard from '../components/PostCard.jsx';
 import Spinner from '../components/Spinner.jsx';
 import ErrorMessage from '../components/ErrorMessage.jsx';
 
+const CONTACT_EMAIL = 'animegirl361278@gmail.com';
+const SOCIALS = [
+  { label: 'X / Twitter', href: 'https://x.com', icon: '𝕏' },
+  { label: 'Instagram', href: 'https://instagram.com/animegirl_1305', icon: 'IG' },
+  { label: 'Discord', href: 'https://discord.com', icon: 'DC' },
+];
+
+function ContactSection() {
+  return (
+    <section id="contact" className="border-t border-slate-900/10 bg-slate-50/60 py-16 dark:border-white/10 dark:bg-white/[0.02]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-10 text-center">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 sm:text-3xl">Get in touch</h2>
+          <p className="mx-auto mt-2 max-w-md text-sm text-slate-500 dark:text-slate-400">
+            Questions, collabs, or just want to say hi? Reach out.
+          </p>
+        </div>
+
+        <div className="mx-auto max-w-xl">
+          <div className="glass rounded-3xl p-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Email</h3>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="mt-2 block font-semibold text-slate-800 hover:text-fuchsia-600 dark:text-slate-100 dark:hover:text-fuchsia-400">
+              {CONTACT_EMAIL}
+            </a>
+            <h3 className="mt-6 text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Follow</h3>
+            <ul className="mt-3 space-y-2">
+              {SOCIALS.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 rounded-xl border border-slate-900/10 bg-white/60 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-fuchsia-500/50 hover:text-fuchsia-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-fuchsia-400"
+                  >
+                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 text-xs font-black text-white">
+                      {s.icon}
+                    </span>
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState('');
@@ -42,7 +91,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <p className="animate-fade-up font-tech text-sm font-semibold uppercase tracking-[0.35em] text-cyan-400">
-            AniVerse
+            GAGVerse
           </p>
           <h1 className="mt-4 text-4xl font-black tracking-tight text-white drop-shadow-lg sm:text-6xl">
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-400 bg-clip-text text-transparent">
@@ -56,8 +105,8 @@ export default function Home() {
             <Link to="/posts" className="btn-primary">
               Browse posts
             </Link>
-            <Link to="/upload" className="btn-secondary">
-              Upload artwork
+            <Link to="/admin" className="btn-secondary">
+              Admin portal
             </Link>
           </div>
         </div>
@@ -86,6 +135,8 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      <ContactSection />
     </div>
   );
 }
