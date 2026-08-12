@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { api } from '../api.js';
+import { api, fullUrl } from '../api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import ErrorMessage from '../components/ErrorMessage.jsx';
 import { timeAgo } from '../utils/format.js';
@@ -282,7 +282,7 @@ function ManagePosts({ refreshKey }) {
           className="glass flex items-center gap-4 rounded-2xl p-3"
         >
           <img
-            src={post.image}
+            src={fullUrl(post.image)}
             alt={post.title}
             className="h-14 w-20 shrink-0 rounded-xl object-cover"
           />

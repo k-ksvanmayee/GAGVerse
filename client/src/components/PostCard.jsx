@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { api } from '../api.js';
-import { useAuth } from '../context/AuthContext.jsx';
+import { api, fullUrl } from '../api.js';import { useAuth } from '../context/AuthContext.jsx';
 import { getVisitorId } from '../utils/visitor.js';
 import { timeAgo } from '../utils/format.js';
 import LikeButton from './LikeButton.jsx';
@@ -70,7 +69,7 @@ export default function PostCard({ post, onDelete }) {
       <Link to={`/posts/${post.id}`} className="block overflow-hidden">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
-            src={post.image}
+            src={fullUrl(post.image)}
             alt={post.title}
             loading="lazy"
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"

@@ -1,4 +1,11 @@
-const BASE = '/api';
+const API_ROOT = (import.meta.env.VITE_API_BASE || '').replace(/\/+$/, '');
+const BASE = `${API_ROOT}/api`;
+
+export function fullUrl(url) {
+  if (!url) return url;
+  if (/^https?:\/\//i.test(url)) return url;
+  return `${API_ROOT}${url}`;
+}
 
 function authHeaders() {
   const token = localStorage.getItem('anime_token');

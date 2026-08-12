@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { api } from '../api.js';
+import { api, fullUrl } from '../api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { getVisitorId } from '../utils/visitor.js';
 import { timeAgo } from '../utils/format.js';
@@ -88,7 +88,7 @@ export default function PostDetail() {
       {post && (
         <article className="animate-fade-up">
           <div className="glass overflow-hidden rounded-3xl">
-            <img src={post.image} alt={post.title} className="max-h-[70vh] w-full object-cover" />
+            <img src={fullUrl(post.image)} alt={post.title} className="max-h-[70vh] w-full object-cover" />
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
